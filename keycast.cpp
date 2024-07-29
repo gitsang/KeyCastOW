@@ -280,7 +280,7 @@ static void startFade() {
 
     for(i = 0; i < labelCount; i++) {
         RectF &rt = keyLabels[i].rect;
-        if(keyLabels[i].time > labelSettings.fadeDuration) {
+        if(keyLabels[i].time > static_cast<int>(labelSettings.fadeDuration)) {
             if(keyLabels[i].fade) {
                 keyLabels[i].time -= SHOWTIMER_INTERVAL;
             }
@@ -453,7 +453,7 @@ void prepareLabels() {
     for(DWORD i = 0; i < labelCount; i ++) {
         keyLabels[i].rect.X = (REAL)labelSettings.borderSize;
         keyLabels[i].rect.Y = paddingH + unitH*(i+offset) + labelSpacing + labelSettings.borderSize;
-        if(keyLabels[i].time > labelSettings.lingerTime+labelSettings.fadeDuration) {
+        if(keyLabels[i].time > static_cast<int>(labelSettings.lingerTime+labelSettings.fadeDuration)) {
             keyLabels[i].time = labelSettings.lingerTime+labelSettings.fadeDuration;
         }
         if(keyLabels[i].time > 0) {
